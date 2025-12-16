@@ -1,13 +1,14 @@
+// C:\learn\MERN Project\job-portal\job-portal-backend\server.js
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
 import authRoutes from "./routes/authRoutes.js";
-import dashboardRoutes from "./routes/dashboardRoutes.js";
 import jobRoutes from './routes/jobRoutes.js'
 import applicationRoutes from './routes/applicationRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 
 dotenv.config();
 
@@ -19,13 +20,14 @@ app.use(express.json());
 
 //routes
 app.use("/api/auth", authRoutes);
-app.use("/api/dashboard", dashboardRoutes);
+// removed: app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/jobs", jobRoutes);
-app.use("/api/jobs/:id", jobRoutes);
 
 app.use('/api/applications', applicationRoutes);
-
 app.use('/api/profile', profileRoutes);
+app.use('/api/admin', adminRoutes);
+app.use("/uploads", express.static("uploads"));
+
 
 app.get('/', (req, res) => {
     res.send('Job portal API is running...');

@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
 		enum: ["applicant", "recruiter", "admin"],
 		default: "applicant",
 	},
+	isBlocked: {
+		type: Boolean,
+		default: false,
+	},
 	profile: {
 		//Applicant Profile
 		resumeUrl: { type: String },
@@ -34,7 +38,7 @@ const userSchema = new mongoose.Schema({
 
 		//Recruiter profile
 		companyName: { type: String },
-		companyName: { type:String },
+		companyLogo: { type:String },
 		website: { type: String },
 		description: { type: String }
 	}
